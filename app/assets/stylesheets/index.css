@@ -1,0 +1,134 @@
+/* Container + Base Setup */
+.weather-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+.weather-header {
+  font-size: 2rem;
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: #2563eb;
+}
+
+/* Current Weather Section */
+.weather-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.weather-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.weather-summary img {
+  width: 90px;
+  height: 90px;
+}
+
+.summary-text {
+  text-align: left;
+}
+
+.temp-main {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.summary-text p {
+  margin: 5px 0;
+  color: #334155;
+}
+
+/* Hourly Cards */
+.hourly-cards {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 15px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.hour-card {
+  min-width: 140px;
+  background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  transition: transform 0.2s ease-in-out;
+}
+
+.hour-card:hover {
+  transform: translateY(-4px);
+}
+
+.hour-card img {
+  width: 40px;
+  height: 40px;
+  margin: 6px 0;
+}
+
+.temp-bar {
+  background: #cbd5e1;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 8px;
+}
+
+.temp-fill {
+  height: 100%;
+  background: linear-gradient(to right, #38bdf8, #0ea5e9);
+  text-align: right;
+  padding-right: 5px;
+  font-size: 0.75rem;
+  color: white;
+  white-space: nowrap;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}

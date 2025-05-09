@@ -1,0 +1,42 @@
+<div class="weather-container <%= @weather[:condition].downcase.gsub(' ', '-') if @weather %>">
+  <h1 class="weather-header">🌤️ Weather Forecast</h1>
+
+  <%= form_with url: root_path, method: :get, local: true do %>
+    <label>Enter City, Country, or Zip:</label>
+    <%= text_field_tag :location, nil, placeholder: "e.g. city or zip code" %>
+    <%= submit_tag "Get Weather" %>
+  <% end %>
+
+  <% if @weather %>
+    <div class="weather-info">
+      <h2>📍 <%= @weather[:city] %>, <%= @weather[:country] %></h2>
+      <div class="weather-summary">
+        <img src="<%= @weather[:icon] %>" alt="Weather icon" />
+        <div class="summary-text">
+          <p class="temp-main"><%= @weather[:temperature] %>°C</p>
+          <p><%= @weather[:condition] %></p>
+          <p>H: <%= @weather[:high] %>°C | L: <%= @weather[:low] %>°C</p>
+          <p><em><%= @from_cache ? "⚡ From Cache" : "🌐 Live Data" %></em></p>
+        </div>
+      </div>
+    </div>
+
+    <% if @weather[:hourly_forecast].present? %>
+      <h3 class="weather-header">🌅 Hourly Outlook</h3>
+      <div class="hourly-cards">
+        <% @weather[:hourly_forecast].each do |hour| %>
+          <div class="hour-card">
+            <p><strong><%= hour[:time].split(' ').last %></strong></p>
+            <img src="<%= hour[:icon] %>" alt="Icon" />
+            <p><%= hour[:condition] %></p>
+            <div class="temp-bar">
+              <div class="temp-fill" style="width: <%= hour[:temp_c] %>%;">
+                <span><%= hour[:temp_c] %>°C</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
